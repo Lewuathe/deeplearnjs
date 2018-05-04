@@ -1028,6 +1028,31 @@ export class ArrayOps {
     return ConcatOps.concat(expandedTensors, axis);
   }
 
+  static unpack<T extends Tensor>(value: T, num: number, axis: number): Tensor[] {
+      let splitSizes: number[];
+      util.assert(
+          value.shape[axis] === num,
+          'Number of splits must evenly divide the axis.');
+      splitSizes = Array(num).fill(1);
+      let outputShape: number[] = Array(value.rank-1).fill(0);
+      let outIndex = 0;
+      for (let i = 0; i < value.rank; i++) {
+        if (i !== axis) {
+          outputShape[outIndex] = value.shape[i];
+          outIndex++;
+        }
+      }
+
+      const begin = Array(value.rank).fill(0);
+      const size = value.shape.slice();
+      return splitSizes.map(s => {
+          size[axis] = s;
+          const slice = value.slice(begin, size);
+          begin[axis] += s;
+          return slice.reshape(outputShape);
+      });
+  }
+
   /**
    * Splits a `Tensor` into sub tensors.
    *

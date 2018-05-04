@@ -2111,6 +2111,20 @@ describeWithFlags('stack', ALL_ENVS, () => {
   });
 });
 
+describeWithFlags('unpack', ALL_ENVS, () => {
+  it('unpack by number', () => {
+    const x = tf.tensor2d([1, 2, 3, 4, 5, 6, 7, 8], [2, 4]);
+    const res = tf.unpack(x, 2, 0);
+    res.forEach(t => t.print());
+  });
+
+  it('unpack by axis=1', () => {
+      const x = tf.tensor2d([1, 2, 3, 4, 5, 6, 7, 8], [2, 4]);
+      const res = tf.unpack(x, 4, 1);
+      res.forEach(t => t.print());
+  });
+});
+
 describeWithFlags('split', ALL_ENVS, () => {
   it('split by number', () => {
     const x = tf.tensor2d([1, 2, 3, 4, 5, 6, 7, 8], [2, 4]);
