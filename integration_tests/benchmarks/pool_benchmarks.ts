@@ -15,7 +15,7 @@
  * =============================================================================
  */
 
-import * as dl from 'deeplearn';
+import * as dl from '@tensorflow/tfjs-core';
 
 import {BenchmarkTest} from './benchmark';
 import * as benchmark_util from './benchmark_util';
@@ -38,10 +38,10 @@ function getPoolingOp(option: string): (
         return x.maxPool(filterSize, strides, 'same');
       };
     case 'min':
-      return (x: dl.Tensor3D, filterSize: [number, number]|number,
-              strides: [number, number]|number) => {
-        return x.minPool(filterSize, strides, 'same');
-      };
+      // return (x: dl.Tensor3D, filterSize: [number, number]|number,
+      //         strides: [number, number]|number) => {
+      //   return x.minPool(filterSize, strides, 'same');
+      // };
     case 'avg':
       return (x: dl.Tensor3D, filterSize: [number, number]|number,
               strides: [number, number]|number) => {

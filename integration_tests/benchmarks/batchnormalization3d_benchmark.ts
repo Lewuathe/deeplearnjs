@@ -14,7 +14,7 @@
  * limitations under the License.
  * =============================================================================
  */
-import * as dl from 'deeplearn';
+import * as dl from '@tensorflow/tfjs-core';
 
 import {BenchmarkTest, LAST_RUN_CPU_CUTOFF_MS} from './benchmark';
 import * as benchmark_util from './benchmark_util';

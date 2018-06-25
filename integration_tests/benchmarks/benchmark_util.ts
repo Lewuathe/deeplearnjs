@@ -15,7 +15,7 @@
  * =============================================================================
  */
 
-import * as dl from 'deeplearn';
+import * as dl from '@tensorflow/tfjs-core';
 
 export async function warmupAndBenchmarkGPU(benchmark: () => dl.Tensor):
     Promise<number> {

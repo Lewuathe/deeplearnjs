@@ -15,7 +15,7 @@
  * =============================================================================
  */
 
-import * as dl from 'deeplearn';
+import * as dl from '@tensorflow/tfjs-core';
 
 import {BenchmarkTest} from './benchmark';
 import * as benchmark_util from './benchmark_util';
